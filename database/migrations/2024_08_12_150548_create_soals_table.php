@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('soal');
             $table->unsignedBigInteger('matkul_id');
-            $table->foreign('matkul_id')->references('id')->on('mata_kuliahs')->onDelete('cascade');
+            $table->foreign('matkul_id')->references('id')->on('mata_kuliahs')->onDelete('cascade');    
             $table->unsignedBigInteger('dosen_id');
             $table->foreign('dosen_id')->references('id')->on('dosens')->onDelete('cascade');
             $table->integer('semester');

@@ -26,10 +26,10 @@ class LecturerController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View
-    {
-        return view('lecturer.create');
-    }
+    // public function create(): View
+    // {
+    //     return view('lecturer.create');
+    // }
     
     /**
      * Store a newly created resource in storage.
@@ -45,18 +45,18 @@ class LecturerController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Lecturer $lecturer): View
-    {
-        return view('lecturer.show',compact('lecturer'));
-    }
+    // public function show(Lecturer $lecturer): View
+    // {
+    //     return view('lecturer.show',compact('lecturer'));
+    // }
   
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Lecturer $lecturer): View
-    {
-        return view('lecturer.edit',compact('lecturer'));
-    }
+    // public function edit(Lecturer $lecturer): View
+    // {
+    //     return view('lecturer.edit',compact('lecturer'));
+    // }
   
     /**
      * Update the specified resource in storage.

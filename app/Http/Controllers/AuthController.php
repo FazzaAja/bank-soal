@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    public function showLoginForm()
+    public function admin()
     {
-        return view('auth.login');
+        $auth = User::all();
+        return view('admin.admin', compact('auth'));
     }
 
     public function login(Request $request)
@@ -54,6 +55,14 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::logout();
-        return redirect()->route('/')->with('success', 'Logged out successfully.');
+        return redirect()->intended('/')->with('success', 'Logged out successfully.');
+    }
+
+    public function destroy(User $user): RedirectResponse
+    {
+        $user->delete();
+           
+        return redirect()->route('delete')
+                        ->with('success','User deleted successfully');
     }
 }

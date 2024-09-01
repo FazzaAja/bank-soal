@@ -26,10 +26,10 @@ class SubjectController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View
-    {
-        return view('subject.create');
-    }
+    // public function create(): View
+    // {
+    //     return view('subject.create');
+    // }
     
     /**
      * Store a newly created resource in storage.
@@ -45,18 +45,18 @@ class SubjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Subject $subject): View
-    {
-        return view('subject.show',compact('subject'));
-    }
+    // public function show(Subject $subject): View
+    // {
+    //     return view('subject.show',compact('subject'));
+    // }
   
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Subject $subject): View
-    {
-        return view('subject.edit',compact('subject'));
-    }
+    // public function edit(Subject $subject): View
+    // {
+    //     return view('subject.edit',compact('subject'));
+    // }
   
     /**
      * Update the specified resource in storage.

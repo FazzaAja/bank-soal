@@ -8,23 +8,44 @@ use App\Http\Controllers\ExamController;
 use App\Http\Controllers\AuthController;
 
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('start');
 });
 
 Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('login', [AuthController::class, 'login']);
-Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
-Route::post('register', [AuthController::class, 'register']);
-Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
-    Route::resource('lecturer', LecturerController::class);
-    Route::resource('subject', SubjectController::class);
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
+
+    Route::get('/lecturer', [LecturerController::class, 'index'])->name('lecturer.index');
+    Route::post('/lecturer', [LecturerController::class, 'store'])->name('lecturer.store');
+    Route::put('/lecturer/{lecturer}', [LecturerController::class, 'update'])->name('lecturer.update');
+    Route::delete('/lecturer/{lecturer}', [LecturerController::class, 'destroy'])->name('lecturer.destroy');
+
+    Route::get('/subject', [SubjectController::class, 'index'])->name('subject.index');
+    Route::post('/subject', [SubjectController::class, 'store'])->name('subject.store');
+    Route::put('/subject/{subject}', [SubjectController::class, 'update'])->name('subject.update');
+    Route::delete('/subject/{subject}', [SubjectController::class, 'destroy'])->name('subject.destroy');
+    
+    // Route::resource('subject', SubjectController::class);
           
     Route::get('/exam/{exam}/edit', [ExamController::class, 'edit'])->name('exam.edit');  
     Route::put('/exam/{exam}', [ExamController::class, 'update'])->name('exam.update');  
     Route::delete('/exam/{exam}', [ExamController::class, 'destroy'])->name('exam.destroy');
+
+    Route::get('admin', [AuthController::class, 'admin'])->name('admin');
+    Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
+    Route::post('register', [AuthController::class, 'register']);
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::delete('/user/{user}', [AuthController::class, 'destroy'])->name('delete');
+
 });
 
 
